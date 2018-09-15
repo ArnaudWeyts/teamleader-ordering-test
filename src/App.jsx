@@ -8,6 +8,8 @@ import {
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+/* eslint-disable-next-line import/no-extraneous-dependencies */
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import './App.css';
 
@@ -17,7 +19,10 @@ import Orders from './containers/Orders';
 import OrderDetail from './containers/OrderDetail';
 import NoMatch from './components/NoMatch';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 const App = () => (
   <Router>

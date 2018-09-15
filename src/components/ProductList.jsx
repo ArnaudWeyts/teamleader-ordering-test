@@ -1,31 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import Product from './Product';
 
 class ProductList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      products: null
-    };
-  }
-
-  componentDidMount() {
-    const { items } = this.props;
-
-    // enrich the product list, replace with possible API request
-    /* const products = items.map(item => {
-      const fullProduct = allProducts.find(
-        product => product.id === item['product-id']
-      );
-      return Object.assign({ product: fullProduct }, item);
-    }); */
-
-    this.setState({ products: [] });
-  }
-
   removeProduct(id) {
     const { products } = this.state;
     const { adjustTotal } = this.props;
@@ -62,22 +39,22 @@ class ProductList extends Component {
   }
 
   render() {
-    const { products } = this.state;
+    const { items } = this.props;
 
-    if (!products) {
+    if (!items) {
       return <div>Loading...</div>;
     }
 
     return (
       <div>
-        {products.map(product => (
-          <div key={product['product-id']}>
-            <Product product={product.product} />
-            <h3>Quantity: {product.quantity}</h3>
-            <h3>Subtotal: {product.total}</h3>
+        {items.map(item => (
+          <div key={item['product-id']}>
+            <Product product={item.product} />
+            <h3>Quantity: {item.quantity}</h3>
+            <h3>Subtotal: {item.total}</h3>
             <button
               type="button"
-              onClick={() => this.removeProduct(product['product-id'])}
+              onClick={() => this.removeProduct(item['product-id'])}
             >
               Remove product
             </button>
@@ -87,17 +64,5 @@ class ProductList extends Component {
     );
   }
 }
-
-ProductList.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      'product-id': PropTypes.string,
-      quantity: PropTypes.string,
-      'unit-price': PropTypes.string,
-      total: PropTypes.string
-    })
-  ).isRequired,
-  adjustTotal: PropTypes.func.isRequired
-};
 
 export default ProductList;

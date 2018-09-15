@@ -4,7 +4,6 @@ const INITIAL_STATE = {
   isFetching: true,
   allOrders: [],
   selectedOrder: null,
-  selectedOrderProducts: [],
   error: null
 };
 
@@ -24,7 +23,7 @@ export default function(state = INITIAL_STATE, action) {
       return {
         ...state,
         isFetching: false,
-        selectedOrderProducts: action.payload
+        selectedOrder: action.payload
       };
     case types.FETCH_PRODUCTSORDER_REJECTED:
       return { ...state, isFetching: false, error: action.error };

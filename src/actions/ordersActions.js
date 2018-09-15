@@ -17,17 +17,25 @@ export function fetchOrders() {
 }
 
 export function fetchProductsForOrder(id) {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch({ type: types.FETCH_PRODUCTSORDER_REQUEST });
 
     return apiHandler
       .getProductsForOrder(id)
-      .then(response =>
-        dispatch({
-          type: types.FETCH_PRODUCTSORDER_FULFILLED,
-          payload: response
-        })
-      )
+      .then(response => {
+        const order = getState().orders.selectedOrder;
+        const orderWithProducts = {
+          ...order,
+          items: order.items.map(item => ({
+            ...item,
+            product: response.find(product => product.id === item['product-id'])
+          }))
+        };
+        return dispatch({
+          type: types.FETCH_PRODUCTSORDER_FULLFILLED,
+          payload: orderWithProducts
+        });
+      })
       .catch(error =>
         dispatch({ type: types.FETCH_PRODUCTSORDER_REJECTED, error })
       );
@@ -42,7 +50,7 @@ export function selectOrder(id) {
 
     const order = getState().orders.allOrders.find(x => x.id === id);
 
-    dispatch({ type: types.SELECT_ORDER, payload: order });
+    await dispatch({ type: types.SELECT_ORDER, payload: order });
 
     return dispatch(fetchProductsForOrder(order.id));
   };

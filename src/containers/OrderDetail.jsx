@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-// import ProductList from '../components/ProductList';
 import { selectOrder } from '../actions/ordersActions';
+
+import ProductList from '../components/ProductList';
 
 class OrderDetail extends Component {
   componentDidMount() {
@@ -27,7 +28,7 @@ class OrderDetail extends Component {
       <div>
         <h2>Order #{order.id}</h2>
         <h2>Items</h2>
-        {/* <ProductList items={order.items} adjustTotal={this.adjustTotal} /> */}
+        <ProductList items={order.items} />
         <button type="button" onClick={() => console.log('add item')}>
           Add an item
         </button>
@@ -42,7 +43,7 @@ class OrderDetail extends Component {
 
 const mapStateToProps = state => ({
   order: state.orders.selectedOrder,
-  products: state.orders.electOrderProducts
+  products: state.orders.selectedOrderProducts
 });
 
 export default connect(mapStateToProps)(OrderDetail);

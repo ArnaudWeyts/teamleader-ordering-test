@@ -13,8 +13,8 @@ import './App.css';
 
 import rootReducer from './reducers';
 
-import Orders from './components/Orders';
-import Order from './components/Order';
+import Orders from './containers/Orders';
+import Order from './components/OrderDetail';
 import NoMatch from './components/NoMatch';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

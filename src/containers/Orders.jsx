@@ -15,7 +15,7 @@ class Orders extends Component {
 
   render() {
     const {
-      orders: { data, isFetching }
+      orders: { allOrders, isFetching }
     } = this.props;
 
     if (isFetching) {
@@ -25,7 +25,7 @@ class Orders extends Component {
     return (
       <div>
         <h2>Orders</h2>
-        {data.map(order => (
+        {allOrders.map(order => (
           <Order key={order.id} order={order} />
         ))}
       </div>

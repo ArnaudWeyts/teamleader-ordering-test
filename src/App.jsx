@@ -14,22 +14,22 @@ import './App.css';
 import rootReducer from './reducers';
 
 import Orders from './containers/Orders';
-import Order from './components/OrderDetail';
+import OrderDetail from './containers/OrderDetail';
 import NoMatch from './components/NoMatch';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const App = () => (
-  <Provider store={store}>
-    <Router>
+  <Router>
+    <Provider store={store}>
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/orders" />} />
-        <Route path="/orders" component={Orders} />
-        <Route path="/orders/:id" component={Order} />
+        <Route exact path="/orders" component={Orders} />
+        <Route path="/orders/:id" component={OrderDetail} />
         <Route component={NoMatch} />
       </Switch>
-    </Router>
-  </Provider>
+    </Provider>
+  </Router>
 );
 
 export default App;

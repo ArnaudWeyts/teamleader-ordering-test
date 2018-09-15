@@ -24,4 +24,18 @@ export default class Api {
       setTimeout(() => resolve(products), SIMULATED_DELAY);
     });
   }
+
+  getProductsForOrder(id) {
+    return new Promise(resolve => {
+      const order = orders.find(x => x.id === id);
+
+      const productsForOrder = order.items.map(item =>
+        products.find(x => x.id === item['product-id'])
+      );
+
+      setTimeout(() => {
+        resolve(productsForOrder);
+      }, SIMULATED_DELAY);
+    });
+  }
 }

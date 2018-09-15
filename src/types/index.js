@@ -18,6 +18,6 @@ export const ordersType = {
   dispatch: func,
   orders: shape({
     isFetching: bool,
-    data: arrayOf(orderType)
+    allOrders: arrayOf(orderType)
   })
 };

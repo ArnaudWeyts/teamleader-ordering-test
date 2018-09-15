@@ -1,43 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import ProductList from './ProductList';
+// import ProductList from '../components/ProductList';
+import { selectOrder } from '../actions/ordersActions';
+import { orderType } from '../types';
 
-class Order extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      order: null
-    };
-
-    this.adjustTotal = this.adjustTotal.bind(this);
-  }
-
+class OrderDetail extends Component {
   componentDidMount() {
     const {
+      dispatch,
       match: {
         params: { id }
       }
     } = this.props;
 
-    // Get order from list, replace with possible API request
-    const order = [];
-
-    this.setState({ order });
-  }
-
-  adjustTotal(unitPrice) {
-    const { order } = this.state;
-
-    order.total -= unitPrice;
-    order.total = order.total.toFixed(2);
-
-    this.setState({ order });
+    dispatch(selectOrder(id));
   }
 
   render() {
-    const { order } = this.state;
+    const { order } = this.props;
 
     if (!order) {
       return <div>Loading...</div>;
@@ -47,7 +29,7 @@ class Order extends Component {
       <div>
         <h2>Order #{order.id}</h2>
         <h2>Items</h2>
-        <ProductList items={order.items} adjustTotal={this.adjustTotal} />
+        {/* <ProductList items={order.items} adjustTotal={this.adjustTotal} /> */}
         <button type="button" onClick={() => console.log('add item')}>
           Add an item
         </button>
@@ -60,7 +42,9 @@ class Order extends Component {
   }
 }
 
-Order.propTypes = {
+OrderDetail.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  order: orderType.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired
@@ -68,4 +52,9 @@ Order.propTypes = {
   }).isRequired
 };
 
-export default Order;
+const mapStateToProps = state => ({
+  order: state.orders.selectedOrder,
+  products: state.orders.electOrderProducts
+});
+
+export default connect(mapStateToProps)(OrderDetail);

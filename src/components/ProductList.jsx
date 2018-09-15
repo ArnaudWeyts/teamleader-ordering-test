@@ -28,6 +28,41 @@ class ProductList extends Component {
     this.setState({ products });
   }
 
+  removeProduct(id) {
+    const { products } = this.state;
+    const { adjustTotal } = this.props;
+
+    // remove certain quantity of product
+    const updatedProduct = products.find(x => x['product-id'] === id);
+    updatedProduct.quantity -= 1;
+
+    // adjust the subtotal price
+    updatedProduct.total -= updatedProduct['unit-price'];
+    updatedProduct.total = updatedProduct.total.toFixed(2);
+
+    let updatedProductList;
+
+    // check if quantity is 0, then remove fully
+    // otherwise adjust quantity
+    if (updatedProduct.quantity < 1) {
+      updatedProductList = products.filter(
+        product => product['product-id'] !== id
+      );
+    } else {
+      updatedProductList = products.map(product => {
+        if (product['product-id'] === id) {
+          return updatedProduct;
+        }
+        return product;
+      });
+    }
+
+    this.setState({ products: updatedProductList });
+
+    // adjust the top-level total price
+    adjustTotal(updatedProduct['unit-price']);
+  }
+
   render() {
     const { products } = this.state;
 
@@ -38,7 +73,17 @@ class ProductList extends Component {
     return (
       <div>
         {products.map(product => (
-          <Product key={product['product-id']} product={product.product} />
+          <div key={product['product-id']}>
+            <Product product={product.product} />
+            <h3>Quantity: {product.quantity}</h3>
+            <h3>Subtotal: {product.total}</h3>
+            <button
+              type="button"
+              onClick={() => this.removeProduct(product['product-id'])}
+            >
+              Remove product
+            </button>
+          </div>
         ))}
       </div>
     );
@@ -53,7 +98,8 @@ ProductList.propTypes = {
       'unit-price': PropTypes.string,
       total: PropTypes.string
     })
-  ).isRequired
+  ).isRequired,
+  adjustTotal: PropTypes.func.isRequired
 };
 
 export default ProductList;

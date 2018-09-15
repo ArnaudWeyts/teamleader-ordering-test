@@ -11,6 +11,8 @@ class Order extends Component {
     this.state = {
       order: null
     };
+
+    this.adjustTotal = this.adjustTotal.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +28,15 @@ class Order extends Component {
     this.setState({ order });
   }
 
+  adjustTotal(unitPrice) {
+    const { order } = this.state;
+
+    order.total -= unitPrice;
+    order.total = order.total.toFixed(2);
+
+    this.setState({ order });
+  }
+
   render() {
     const { order } = this.state;
 
@@ -33,7 +44,20 @@ class Order extends Component {
       return <div>Loading...</div>;
     }
 
-    return <ProductList items={order.items} />;
+    return (
+      <div>
+        <h2>Order #{order.id}</h2>
+        <h2>Items</h2>
+        <ProductList items={order.items} adjustTotal={this.adjustTotal} />
+        <button type="button" onClick={() => console.log('add item')}>
+          Add an item
+        </button>
+        <h2>Total: {order.total}</h2>
+        <button type="button" onClick={() => console.log('order placed')}>
+          Place order
+        </button>
+      </div>
+    );
   }
 }
 

@@ -12,12 +12,12 @@ export const orderType = shape({
     })
   ),
   total: string
-}).isRequired;
+});
 
 export const ordersType = {
-  dispatch: func,
+  dispatch: func.isRequired,
   orders: shape({
-    isFetching: bool,
-    allOrders: arrayOf(orderType)
-  })
+    isFetching: bool.isRequired,
+    allOrders: arrayOf(orderType.isRequired).isRequired
+  }).isRequired
 };

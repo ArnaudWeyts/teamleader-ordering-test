@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 // import ProductList from '../components/ProductList';
 import { selectOrder } from '../actions/ordersActions';
-import { orderType } from '../types';
 
 class OrderDetail extends Component {
   componentDidMount() {
@@ -41,16 +39,6 @@ class OrderDetail extends Component {
     );
   }
 }
-
-OrderDetail.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  order: orderType.isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
-};
 
 const mapStateToProps = state => ({
   order: state.orders.selectedOrder,

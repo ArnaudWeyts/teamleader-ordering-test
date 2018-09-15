@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { ordersType } from '../types';
-
 import { fetchOrders } from '../actions/ordersActions';
 
 import Order from '../components/Order';
@@ -32,8 +30,6 @@ class Orders extends Component {
     );
   }
 }
-
-Orders.propTypes = ordersType;
 
 const mapStateToProps = state => ({
   orders: state.orders

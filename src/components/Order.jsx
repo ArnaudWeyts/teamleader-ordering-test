@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { orderType } from '../types';
-
 const Order = ({ order }) => (
   <div>
     <h3>Order #{order.id}</h3>
@@ -11,7 +9,5 @@ const Order = ({ order }) => (
     </Link>
   </div>
 );
-
-Order.propTypes = orderType;
 
 export default Order;

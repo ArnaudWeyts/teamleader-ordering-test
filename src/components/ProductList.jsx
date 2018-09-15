@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import allProducts from '../data/products.json';
-
 import Product from './Product';
 
 class ProductList extends Component {
@@ -18,14 +16,14 @@ class ProductList extends Component {
     const { items } = this.props;
 
     // enrich the product list, replace with possible API request
-    const products = items.map(item => {
+    /* const products = items.map(item => {
       const fullProduct = allProducts.find(
         product => product.id === item['product-id']
       );
       return Object.assign({ product: fullProduct }, item);
-    });
+    }); */
 
-    this.setState({ products });
+    this.setState({ products: [] });
   }
 
   removeProduct(id) {

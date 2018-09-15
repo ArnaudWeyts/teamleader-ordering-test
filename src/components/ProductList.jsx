@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import allProducts from '../data/products.json';
 
+import Product from './Product';
+
 class ProductList extends Component {
   constructor(props) {
     super(props);
@@ -13,14 +15,17 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    const { products } = this.props;
+    const { items } = this.props;
 
-    const fullProducts = products.map(product => {
-      const fullProduct = allProducts.find(x => x.id === product.id);
-      return Object.assign({ product: fullProduct }, product);
+    // enrich the product list, replace with possible API request
+    const products = items.map(item => {
+      const fullProduct = allProducts.find(
+        product => product.id === item['product-id']
+      );
+      return Object.assign({ product: fullProduct }, item);
     });
 
-    this.this.setState({ products: fullProducts });
+    this.setState({ products });
   }
 
   render() {
@@ -30,17 +35,23 @@ class ProductList extends Component {
       return <div>Loading...</div>;
     }
 
-    return <div>ProductList</div>;
+    return (
+      <div>
+        {products.map(product => (
+          <Product key={product['product-id']} product={product.product} />
+        ))}
+      </div>
+    );
   }
 }
 
 ProductList.propTypes = {
-  products: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({
       'product-id': PropTypes.string,
-      quantity: PropTypes.number,
-      'unit-price': PropTypes.number,
-      total: PropTypes.number
+      quantity: PropTypes.string,
+      'unit-price': PropTypes.string,
+      total: PropTypes.string
     })
   ).isRequired
 };

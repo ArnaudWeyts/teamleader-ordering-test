@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import orders from '../data/orders.json';
+import ProductList from './ProductList';
 
 class Order extends Component {
   constructor(props) {
@@ -19,7 +20,10 @@ class Order extends Component {
       }
     } = this.props;
 
-    this.setState({ order: orders.find(order => order.id === id) });
+    // Get order from list, replace with possible API request
+    const order = orders.find(x => x.id === id);
+
+    this.setState({ order });
   }
 
   render() {
@@ -29,7 +33,7 @@ class Order extends Component {
       return <div>Loading...</div>;
     }
 
-    return <div>{order.id}</div>;
+    return <ProductList items={order.items} />;
   }
 }
 

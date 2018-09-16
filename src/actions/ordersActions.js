@@ -1,16 +1,16 @@
 import types from './types';
 import Api from '../api';
 
-const apiHandler = new Api();
+const api = new Api();
 
 export function fetchOrders() {
   return dispatch => {
     dispatch({ type: types.FETCH_ORDERS_REQUEST });
 
-    return apiHandler
+    return api
       .getOrders()
-      .then(response =>
-        dispatch({ type: types.FETCH_ORDERS_FULFILLED, payload: response })
+      .then(orders =>
+        dispatch({ type: types.FETCH_ORDERS_FULFILLED, payload: { orders } })
       )
       .catch(error => dispatch({ type: types.FETCH_ORDERS_REJECTED, error }));
   };
@@ -20,21 +20,21 @@ export function fetchProductsForOrder(id) {
   return (dispatch, getState) => {
     dispatch({ type: types.FETCH_PRODUCTSORDER_REQUEST });
 
-    return apiHandler
+    return api
       .getProductsForOrder(id)
-      .then(response => {
+      .then(products => {
         // add products to the order
         const order = getState().orders.selectedOrder;
         const orderWithProducts = {
           ...order,
           items: order.items.map(item => ({
             ...item,
-            product: response.find(product => product.id === item['product-id'])
+            product: products.find(product => product.id === item['product-id'])
           }))
         };
         return dispatch({
           type: types.FETCH_PRODUCTSORDER_FULLFILLED,
-          payload: orderWithProducts
+          payload: { orderWithProducts }
         });
       })
       .catch(error =>
@@ -51,7 +51,7 @@ export function selectOrder(id) {
 
     const order = getState().orders.allOrders.find(x => x.id === id);
 
-    await dispatch({ type: types.SELECT_ORDER, payload: order });
+    await dispatch({ type: types.SELECT_ORDER, payload: { order } });
 
     return dispatch(fetchProductsForOrder(order.id));
   };

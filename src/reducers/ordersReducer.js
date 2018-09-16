@@ -12,18 +12,18 @@ export default function(state = INITIAL_STATE, action) {
     case types.FETCH_ORDERS_REQUEST:
       return { ...state, isFetching: true };
     case types.FETCH_ORDERS_FULFILLED:
-      return { ...state, isFetching: false, allOrders: action.payload };
+      return { ...state, isFetching: false, allOrders: action.payload.orders };
     case types.FETCH_ORDERS_REJECTED:
       return { ...state, isFetching: false, error: action.error };
     case types.SELECT_ORDER:
-      return { ...state, selectedOrder: action.payload };
+      return { ...state, selectedOrder: action.payload.order };
     case types.FETCH_PRODUCTSORDER_REQUEST:
       return { ...state, isFetching: true };
     case types.FETCH_PRODUCTSORDER_FULLFILLED:
       return {
         ...state,
         isFetching: false,
-        selectedOrder: action.payload
+        selectedOrder: action.payload.orderWithProducts
       };
     case types.FETCH_PRODUCTSORDER_REJECTED:
       return { ...state, isFetching: false, error: action.error };

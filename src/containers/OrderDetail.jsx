@@ -4,8 +4,17 @@ import { connect } from 'react-redux';
 import { selectOrder, removeProductFromOrder } from '../actions/ordersActions';
 
 import ProductList from '../components/ProductList';
+import Products from './Products';
 
 class OrderDetail extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showProducts: false
+    };
+  }
+
   componentDidMount() {
     const {
       dispatch,
@@ -17,8 +26,13 @@ class OrderDetail extends Component {
     dispatch(selectOrder(id));
   }
 
+  addToOrder(id) {
+    console.log(id);
+  }
+
   render() {
     const { dispatch, order } = this.props;
+    const { showProducts } = this.state;
 
     if (!order) {
       return <div>Loading...</div>;
@@ -34,13 +48,19 @@ class OrderDetail extends Component {
             dispatch(removeProductFromOrder(id, quantity))
           }
         />
-        <button type="button" onClick={() => console.log('add item')}>
-          Add an item
-        </button>
         <h2>Total: {order.total}</h2>
         <button type="button" onClick={() => console.log('order placed')}>
           Place order
         </button>
+        <div>
+          <button
+            type="button"
+            onClick={() => this.setState({ showProducts: true })}
+          >
+            Add an item
+          </button>
+          {showProducts && <Products addToOrder={this.addToOrder} />}
+        </div>
       </div>
     );
   }

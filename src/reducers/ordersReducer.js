@@ -27,6 +27,8 @@ export default function(state = INITIAL_STATE, action) {
       };
     case types.FETCH_PRODUCTSORDER_REJECTED:
       return { ...state, isFetching: false, error: action.error };
+    case types.REMOVE_PRODUCT_ORDER:
+      return { ...state, selectedOrder: action.payload.updatedOrder };
     default:
       return state;
   }

@@ -23,6 +23,7 @@ export function fetchProductsForOrder(id) {
     return apiHandler
       .getProductsForOrder(id)
       .then(response => {
+        // add products to the order
         const order = getState().orders.selectedOrder;
         const orderWithProducts = {
           ...order,
@@ -56,4 +57,30 @@ export function selectOrder(id) {
   };
 }
 
-export function removeProductFromOrder() {}
+export function removeProductFromOrder(id, quantity) {
+  return (dispatch, getState) => {
+    const order = getState().orders.selectedOrder;
+
+    let updatedOrder;
+
+    const itemToUpdate = order.items.find(x => x['product-id'] === id);
+    itemToUpdate.quantity -= quantity;
+
+    // remove the product from the order
+    if (itemToUpdate.quantity < 1) {
+      updatedOrder = {
+        ...order,
+        items: order.items.filter(item => item['product-id'] !== id)
+      };
+    } else {
+      updatedOrder = {
+        ...order,
+        items: order.items.map(
+          item => (item['product-id'] === id ? itemToUpdate : item)
+        )
+      };
+    }
+
+    dispatch({ type: types.REMOVE_PRODUCT_ORDER, payload: { updatedOrder } });
+  };
+}

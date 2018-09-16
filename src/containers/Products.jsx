@@ -22,7 +22,7 @@ class Products extends Component {
         {products.map(product => (
           <div key={product.id}>
             <Product product={product} />
-            <button type="button" onClick={() => addToOrder(product.id)}>
+            <button type="button" onClick={() => addToOrder(product.id, 1)}>
               Add to order
             </button>
           </div>

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { selectOrder, removeProductFromOrder } from '../actions/ordersActions';
+import {
+  selectOrder,
+  removeProductFromOrder,
+  addProductToOrder
+} from '../actions/ordersActions';
 
 import ProductList from '../components/ProductList';
 import Products from './Products';
@@ -24,10 +28,6 @@ class OrderDetail extends Component {
     } = this.props;
 
     dispatch(selectOrder(id));
-  }
-
-  addToOrder(id) {
-    console.log(id);
   }
 
   render() {
@@ -59,7 +59,13 @@ class OrderDetail extends Component {
           >
             Add an item
           </button>
-          {showProducts && <Products addToOrder={this.addToOrder} />}
+          {showProducts && (
+            <Products
+              addToOrder={(id, quantity) =>
+                dispatch(addProductToOrder(id, quantity))
+              }
+            />
+          )}
         </div>
       </div>
     );

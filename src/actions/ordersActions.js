@@ -84,3 +84,36 @@ export function removeProductFromOrder(id, quantity) {
     dispatch({ type: types.REMOVE_PRODUCT_ORDER, payload: { updatedOrder } });
   };
 }
+
+export function addProductToOrder(id, quantity) {
+  return (dispatch, getState) => {
+    const order = getState().orders.selectedOrder;
+    const product = getState().products.data.find(x => x.id === id);
+
+    const existingItem = order.items.find(x => x['product-id'] === product.id);
+
+    let newItem;
+    if (existingItem) {
+      newItem = {
+        ...existingItem,
+        quantity: existingItem.quantity + quantity,
+        total: existingItem.total + product.price * quantity
+      };
+    } else {
+      newItem = {
+        'product-id': product.id,
+        quantity,
+        'unit-price': product.price,
+        total: product.price * quantity,
+        product
+      };
+    }
+
+    const updatedOrder = {
+      ...order,
+      items: [...order.items.filter(item => item['product-id'] !== id), newItem]
+    };
+
+    dispatch({ type: types.ADD_PRODUCT_ORDER, payload: { updatedOrder } });
+  };
+}

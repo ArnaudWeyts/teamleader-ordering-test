@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Button, Card } from 'antd';
+
 import { fetchProducts } from '../actions/productActions';
+
+import Loading from '../components/Loading';
 import Product from '../components/Product';
 
 class Products extends Component {
@@ -14,18 +18,18 @@ class Products extends Component {
     const { isFetching, products, addToOrder } = this.props;
 
     if (isFetching) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
 
     return (
       <div>
         {products.map(product => (
-          <div key={product.id}>
+          <Card key={product.id}>
             <Product product={product} />
-            <button type="button" onClick={() => addToOrder(product.id, 1)}>
+            <Button type="button" onClick={() => addToOrder(product.id, 1)}>
               Add to order
-            </button>
-          </div>
+            </Button>
+          </Card>
         ))}
       </div>
     );

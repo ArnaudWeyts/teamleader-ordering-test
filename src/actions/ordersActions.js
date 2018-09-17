@@ -137,13 +137,13 @@ export function placeOrder() {
 
       if (customer.revenue >= order.total && order.total > 0) {
         dispatch({ type: types.PLACE_ORDER_FULFILLED });
-        console.debug('Order sucessfully placed', order);
+        console.log('Order sucessfully placed', order);
       } else {
         dispatch({
           type: types.PLACE_ORDER_REJECTED,
           error: 'Transaction rejected'
         });
-        console.debug('Transaction rejected');
+        console.log('Transaction rejected');
       }
     });
   };

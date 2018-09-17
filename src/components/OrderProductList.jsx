@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Card, Button, InputNumber } from 'antd';
+
 import Product from './Product';
 import { formatToPrice } from '../helpers';
 
@@ -11,18 +13,13 @@ class OrderProductList extends Component {
       removeQuantity: 1
     };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleInputNumberChange = this.handleInputNumberChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInputChange(event) {
-    const {
-      target: { name, type, checked, value }
-    } = event;
-    const newValue = type === 'checkbox' ? checked : value;
-
+  handleInputNumberChange(number) {
     this.setState({
-      [name]: newValue
+      removeQuantity: number
     });
   }
 
@@ -44,21 +41,23 @@ class OrderProductList extends Component {
     return (
       <div>
         {items.map(item => (
-          <div key={item['product-id']}>
+          <Card key={item['product-id']}>
             <Product product={item.product} />
             <h3>Quantity: {item.quantity}</h3>
             <h3>Subtotal: {formatToPrice(item.total)}</h3>
             <form onSubmit={e => this.handleSubmit(e, item['product-id'])}>
-              <input
-                type="number"
+              <InputNumber
                 name="removeQuantity"
-                max={item.quantity}
+                min={1}
+                max={+item.quantity}
                 value={removeQuantity}
-                onChange={this.handleInputChange}
+                onChange={this.handleInputNumberChange}
               />
-              <button type="submit">Remove product(s)</button>
+              <Button type="default" htmlType="submit">
+                Remove product(s)
+              </Button>
             </form>
-          </div>
+          </Card>
         ))}
       </div>
     );

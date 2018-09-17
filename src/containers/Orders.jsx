@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { fetchOrders } from '../actions/ordersActions';
 
+import Loading from '../components/Loading';
 import Order from '../components/Order';
 
 class Orders extends Component {
@@ -17,12 +18,11 @@ class Orders extends Component {
     } = this.props;
 
     if (isFetching) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
 
     return (
       <div>
-        <h2>Orders</h2>
         {allOrders.map(order => (
           <Order key={order.id} order={order} />
         ))}

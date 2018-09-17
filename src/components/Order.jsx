@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { Card, Button } from 'antd';
+
 const Order = ({ order }) => (
-  <div>
+  <Card>
     <h3>Order #{order.id}</h3>
     <Link to={`/orders/${order.id}`}>
-      <button type="button">View</button>
+      <Button type="primary">View</Button>
     </Link>
-  </div>
+  </Card>
 );
 
 export default Order;

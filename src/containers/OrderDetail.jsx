@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import {
   selectOrder,
   removeProductFromOrder,
-  addProductToOrder
+  addProductToOrder,
+  placeOrder
 } from '../actions/ordersActions';
 
 import OrderProductList from '../components/OrderProductList';
@@ -51,7 +52,7 @@ class OrderDetail extends Component {
           }
         />
         <h2>Total: {formatToPrice(order.total)}</h2>
-        <button type="button" onClick={() => console.log('order placed')}>
+        <button type="button" onClick={() => dispatch(placeOrder())}>
           Place order
         </button>
         <div>

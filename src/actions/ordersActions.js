@@ -125,3 +125,26 @@ export function addProductToOrder(id, quantity) {
     dispatch({ type: types.ADD_PRODUCT_ORDER, payload: { updatedOrder } });
   };
 }
+
+export function placeOrder() {
+  return async (dispatch, getState) => {
+    dispatch({ type: types.PLACE_ORDER_REQUEST });
+
+    const order = getState().orders.selectedOrder;
+
+    api.getCustomers().then(customers => {
+      const customer = customers.find(x => x.id === order['customer-id']);
+
+      if (customer.revenue >= order.total && order.total > 0) {
+        dispatch({ type: types.PLACE_ORDER_FULFILLED });
+        console.debug('Order sucessfully placed', order);
+      } else {
+        dispatch({
+          type: types.PLACE_ORDER_REJECTED,
+          error: 'Transaction rejected'
+        });
+        console.debug('Transaction rejected');
+      }
+    });
+  };
+}

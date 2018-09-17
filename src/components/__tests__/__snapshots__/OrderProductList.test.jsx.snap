@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderProductList tests renders OrderProductList 1`] = `
+<div>
+  <div>
+    <div>
+      <p>
+        Description: 
+        Screwdriver
+      </p>
+      <p>
+        Category: 
+        1
+      </p>
+      <p>
+        Price: 
+        €9.75
+      </p>
+    </div>
+    <h3>
+      Quantity: 
+      2
+    </h3>
+    <h3>
+      Subtotal: 
+      €19.50
+    </h3>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        max="2"
+        name="removeQuantity"
+        onChange={[Function]}
+        type="number"
+        value={1}
+      />
+      <button
+        type="submit"
+      >
+        Remove product(s)
+      </button>
+    </form>
+  </div>
+  <div>
+    <div>
+      <p>
+        Description: 
+        Electric screwdriver
+      </p>
+      <p>
+        Category: 
+        1
+      </p>
+      <p>
+        Price: 
+        €49.50
+      </p>
+    </div>
+    <h3>
+      Quantity: 
+      1
+    </h3>
+    <h3>
+      Subtotal: 
+      €49.50
+    </h3>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        max={1}
+        name="removeQuantity"
+        onChange={[Function]}
+        type="number"
+        value={1}
+      />
+      <button
+        type="submit"
+      >
+        Remove product(s)
+      </button>
+    </form>
+  </div>
+</div>
+`;

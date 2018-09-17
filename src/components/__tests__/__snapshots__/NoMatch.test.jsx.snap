@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoMatch tests renders NoMatch 1`] = `
+<div>
+  Couln't find the page you were looking for...
+   
+  <span
+    aria-label="Bandaged emoji"
+    role="img"
+  >
+    🤕
+  </span>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    <button
+      type="button"
+    >
+      Take me back to safety
+    </button>
+  </a>
+</div>
+`;

@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
     "prettier": "^1.14.2",
@@ -11,6 +13,7 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
+    "react-test-renderer": "^16.5.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0"
   },
@@ -22,10 +25,11 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint": "^5.3.0",
+    "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.0",
@@ -45,10 +49,12 @@
     "extends": [
       "airbnb",
       "prettier",
-      "prettier/react"
+      "prettier/react",
+      "plugin:jest/recommended"
     ],
     "plugins": [
-      "prettier"
+      "prettier",
+      "jest"
     ],
     "parserOptions": {
       "ecmaFeatures": {

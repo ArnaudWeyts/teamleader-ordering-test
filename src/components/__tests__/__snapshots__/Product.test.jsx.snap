@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a product 1`] = `
+<div>
+  <p>
+    Description: 
+    Screwdriver
+  </p>
+  <p>
+    Category: 
+    1
+  </p>
+  <p>
+    Price: 
+    €9.75
+  </p>
+</div>
+`;
+
+exports[`renders a product as loading 1`] = `
+<div>
+  Loading...
+</div>
+`;

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the order detail page 1`] = `
+<div>
+  <h2>
+    Order #
+    1
+  </h2>
+  <h2>
+    Items
+  </h2>
+  <div>
+    <div>
+      <div>
+        Loading...
+      </div>
+      <h3>
+        Quantity: 
+        10
+      </h3>
+      <h3>
+        Subtotal: 
+        €49.90
+      </h3>
+      <form
+        onSubmit={[Function]}
+      >
+        <input
+          max={10}
+          name="removeQuantity"
+          onChange={[Function]}
+          type="number"
+          value={1}
+        />
+        <button
+          type="submit"
+        >
+          Remove product(s)
+        </button>
+      </form>
+    </div>
+  </div>
+  <h2>
+    Total: 
+    €49.90
+  </h2>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Place order
+  </button>
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Add an item
+    </button>
+  </div>
+</div>
+`;
+
+exports[`renders the order detail page loading 1`] = `
+<div>
+  Loading...
+</div>
+`;

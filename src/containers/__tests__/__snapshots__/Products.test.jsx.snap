@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the products 1`] = `
+<div>
+  <div>
+    <div>
+      <p>
+        Description: 
+        Screwdriver
+      </p>
+      <p>
+        Category: 
+        1
+      </p>
+      <p>
+        Price: 
+        €9.75
+      </p>
+    </div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Add to order
+    </button>
+  </div>
+  <div>
+    <div>
+      <p>
+        Description: 
+        Electric screwdriver
+      </p>
+      <p>
+        Category: 
+        1
+      </p>
+      <p>
+        Price: 
+        €49.50
+      </p>
+    </div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Add to order
+    </button>
+  </div>
+</div>
+`;
+
+exports[`renders the products loading 1`] = `<div />`;

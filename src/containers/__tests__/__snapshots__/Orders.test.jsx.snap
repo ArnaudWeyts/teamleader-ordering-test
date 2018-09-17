@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the orders 1`] = `
+<div>
+  <h2>
+    Orders
+  </h2>
+  <div>
+    <h3>
+      Order #
+      1
+    </h3>
+    <a
+      href="/orders/1"
+      onClick={[Function]}
+    >
+      <button
+        type="button"
+      >
+        View
+      </button>
+    </a>
+  </div>
+  <div>
+    <h3>
+      Order #
+      2
+    </h3>
+    <a
+      href="/orders/2"
+      onClick={[Function]}
+    >
+      <button
+        type="button"
+      >
+        View
+      </button>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`renders the orders loading 1`] = `
+<div>
+  <h2>
+    Orders
+  </h2>
+</div>
+`;

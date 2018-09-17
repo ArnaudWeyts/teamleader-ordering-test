@@ -7,8 +7,10 @@ import {
   addProductToOrder
 } from '../actions/ordersActions';
 
-import ProductList from '../components/ProductList';
+import OrderProductList from '../components/OrderProductList';
 import Products from './Products';
+
+import { formatToPrice } from '../helpers';
 
 class OrderDetail extends Component {
   constructor(props) {
@@ -42,13 +44,13 @@ class OrderDetail extends Component {
       <div>
         <h2>Order #{order.id}</h2>
         <h2>Items</h2>
-        <ProductList
+        <OrderProductList
           items={order.items}
           removeProduct={(id, quantity) =>
             dispatch(removeProductFromOrder(id, quantity))
           }
         />
-        <h2>Total: {order.total}</h2>
+        <h2>Total: {formatToPrice(order.total)}</h2>
         <button type="button" onClick={() => console.log('order placed')}>
           Place order
         </button>

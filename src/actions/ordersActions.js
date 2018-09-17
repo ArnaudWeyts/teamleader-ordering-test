@@ -1,5 +1,6 @@
 import types from './types';
 import Api from '../api';
+import { calculateTotal } from '../helpers';
 
 const api = new Api();
 
@@ -61,25 +62,29 @@ export function removeProductFromOrder(id, quantity) {
   return (dispatch, getState) => {
     const order = getState().orders.selectedOrder;
 
-    let updatedOrder;
-
     const itemToUpdate = order.items.find(x => x['product-id'] === id);
     itemToUpdate.quantity -= quantity;
+    itemToUpdate.total = +(
+      itemToUpdate.total -
+      itemToUpdate['unit-price'] * quantity
+    ).toFixed(2);
+
+    let updatedItems;
 
     // remove the product from the order
     if (itemToUpdate.quantity < 1) {
-      updatedOrder = {
-        ...order,
-        items: order.items.filter(item => item['product-id'] !== id)
-      };
+      updatedItems = order.items.filter(item => item['product-id'] !== id);
     } else {
-      updatedOrder = {
-        ...order,
-        items: order.items.map(
-          item => (item['product-id'] === id ? itemToUpdate : item)
-        )
-      };
+      updatedItems = order.items.map(
+        item => (item['product-id'] === id ? itemToUpdate : item)
+      );
     }
+
+    const updatedOrder = {
+      ...order,
+      total: calculateTotal(updatedItems),
+      items: updatedItems
+    };
 
     dispatch({ type: types.REMOVE_PRODUCT_ORDER, payload: { updatedOrder } });
   };
@@ -109,8 +114,11 @@ export function addProductToOrder(id, quantity) {
       };
     }
 
+    const total = +(order.total + product.price * quantity).toFixed(2);
+
     const updatedOrder = {
       ...order,
+      total,
       items: [...order.items.filter(item => item['product-id'] !== id), newItem]
     };
 

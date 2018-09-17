@@ -3,6 +3,7 @@ import Api from '../api';
 
 const api = new Api();
 
+/* eslint-disable-next-line import/prefer-default-export */
 export function fetchProducts() {
   return dispatch => {
     dispatch({ type: types.FETCH_PRODUCTS_REQUEST });

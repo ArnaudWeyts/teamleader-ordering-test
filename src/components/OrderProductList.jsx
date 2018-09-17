@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 import Product from './Product';
+import { formatToPrice } from '../helpers';
 
-class ProductList extends Component {
+class OrderProductList extends Component {
   constructor(props) {
     super(props);
 
@@ -46,7 +47,7 @@ class ProductList extends Component {
           <div key={item['product-id']}>
             <Product product={item.product} />
             <h3>Quantity: {item.quantity}</h3>
-            <h3>Subtotal: {item.total}</h3>
+            <h3>Subtotal: {formatToPrice(item.total)}</h3>
             <form onSubmit={e => this.handleSubmit(e, item['product-id'])}>
               <input
                 type="number"
@@ -64,4 +65,4 @@ class ProductList extends Component {
   }
 }
 
-export default ProductList;
+export default OrderProductList;

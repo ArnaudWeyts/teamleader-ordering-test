@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { formatToPrice } from '../helpers';
+
 const Product = ({ product }) =>
   !product ? (
     <div>Loading...</div>
@@ -7,7 +9,7 @@ const Product = ({ product }) =>
     <div>
       <p>Description: {product.description}</p>
       <p>Category: {product.category}</p>
-      <p>Price: {product.price}</p>
+      <p>Price: {formatToPrice(product.price)}</p>
     </div>
   );
 

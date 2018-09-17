@@ -8,6 +8,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 It also uses [prettier](https://prettier.io) to automatically format the code using a pre-commit hook. And follows the [Airbnb eslint config](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb).
 
+### Possible additions
+
+- Static type checking using Typescript or Flow
+- Extend the test suites coverage
+
 ## Setup
 
 ### Install dependencies
@@ -38,4 +43,14 @@ $ yarn build
 or
 
 $ npm run build
+```
+
+### Run tests
+
+```sh
+$ yarn test
+
+or
+
+$ npm run test
 ```

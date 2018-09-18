@@ -2,49 +2,69 @@
 
 exports[`renders the products 1`] = `
 <div>
-  <div>
-    <div>
-      <p>
-        Description: 
-        Screwdriver
-      </p>
-      <p>
-        Category: 
-        1
-      </p>
-      <p>
-        Price: 
-        €9.75
-      </p>
-    </div>
-    <button
-      onClick={[Function]}
-      type="button"
+  <div
+    className="ant-card ant-card-bordered"
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
     >
-      Add to order
-    </button>
+      <div>
+        <p>
+          Description: 
+          Screwdriver
+        </p>
+        <p>
+          Category: 
+          1
+        </p>
+        <p>
+          Price: 
+          €9.75
+        </p>
+      </div>
+      <button
+        className="ant-btn ant-btn-button"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Add to order
+        </span>
+      </button>
+    </div>
   </div>
-  <div>
-    <div>
-      <p>
-        Description: 
-        Electric screwdriver
-      </p>
-      <p>
-        Category: 
-        1
-      </p>
-      <p>
-        Price: 
-        €49.50
-      </p>
-    </div>
-    <button
-      onClick={[Function]}
-      type="button"
+  <div
+    className="ant-card ant-card-bordered"
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
     >
-      Add to order
-    </button>
+      <div>
+        <p>
+          Description: 
+          Electric screwdriver
+        </p>
+        <p>
+          Category: 
+          1
+        </p>
+        <p>
+          Price: 
+          €49.50
+        </p>
+      </div>
+      <button
+        className="ant-btn ant-btn-button"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Add to order
+        </span>
+      </button>
+    </div>
   </div>
 </div>
 `;

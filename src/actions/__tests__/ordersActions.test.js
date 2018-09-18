@@ -58,7 +58,7 @@ describe('async orders actions', () => {
               items: [
                 {
                   'product-id': 'A101',
-                  quantity: '2',
+                  quantity: 2,
                   'unit-price': 9.75,
                   total: 19.5
                 },

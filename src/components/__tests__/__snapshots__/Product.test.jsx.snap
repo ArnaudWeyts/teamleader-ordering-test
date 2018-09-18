@@ -18,7 +18,46 @@ exports[`renders a product 1`] = `
 `;
 
 exports[`renders a product as loading 1`] = `
-<div>
-  Loading...
+<div
+  className="ant-skeleton ant-skeleton-active"
+>
+  <div
+    className="ant-skeleton-content"
+  >
+    <h3
+      className="ant-skeleton-title"
+      style={
+        Object {
+          "width": "38%",
+        }
+      }
+    />
+    <ul
+      className="ant-skeleton-paragraph"
+      style={undefined}
+    >
+      <li
+        style={
+          Object {
+            "width": undefined,
+          }
+        }
+      />
+      <li
+        style={
+          Object {
+            "width": undefined,
+          }
+        }
+      />
+      <li
+        style={
+          Object {
+            "width": "61%",
+          }
+        }
+      />
+    </ul>
+  </div>
 </div>
 `;

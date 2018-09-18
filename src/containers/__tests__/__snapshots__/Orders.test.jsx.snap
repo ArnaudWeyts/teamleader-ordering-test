@@ -2,48 +2,61 @@
 
 exports[`renders the orders 1`] = `
 <div>
-  <h2>
-    Orders
-  </h2>
-  <div>
-    <h3>
-      Order #
-      1
-    </h3>
-    <a
-      href="/orders/1"
-      onClick={[Function]}
+  <div
+    className="ant-card ant-card-bordered"
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
     >
-      <button
-        type="button"
+      <h3>
+        Order #
+        1
+      </h3>
+      <a
+        href="/orders/1"
+        onClick={[Function]}
       >
-        View
-      </button>
-    </a>
+        <button
+          className="ant-btn ant-btn-primary"
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            View
+          </span>
+        </button>
+      </a>
+    </div>
   </div>
-  <div>
-    <h3>
-      Order #
-      2
-    </h3>
-    <a
-      href="/orders/2"
-      onClick={[Function]}
+  <div
+    className="ant-card ant-card-bordered"
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
     >
-      <button
-        type="button"
+      <h3>
+        Order #
+        2
+      </h3>
+      <a
+        href="/orders/2"
+        onClick={[Function]}
       >
-        View
-      </button>
-    </a>
+        <button
+          className="ant-btn ant-btn-primary"
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            View
+          </span>
+        </button>
+      </a>
+    </div>
   </div>
 </div>
 `;
 
-exports[`renders the orders loading 1`] = `
-<div>
-  <h2>
-    Orders
-  </h2>
-</div>
-`;
+exports[`renders the orders loading 1`] = `<div />`;

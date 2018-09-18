@@ -9,60 +9,249 @@ exports[`renders the order detail page 1`] = `
   <h2>
     Items
   </h2>
-  <div>
-    <div>
-      <div>
-        Loading...
-      </div>
-      <h3>
-        Quantity: 
-        10
-      </h3>
-      <h3>
-        Subtotal: 
-        €49.90
-      </h3>
-      <form
-        onSubmit={[Function]}
+  <div
+    style={
+      Object {
+        "maxHeight": "70vh",
+        "overflowY": "scroll",
+      }
+    }
+  >
+    <div
+      className="ant-card ant-card-bordered"
+    >
+      <div
+        className="ant-card-body"
+        style={Object {}}
       >
-        <input
-          max={10}
-          name="removeQuantity"
-          onChange={[Function]}
-          type="number"
-          value={1}
-        />
-        <button
-          type="submit"
+        <div
+          className="ant-skeleton ant-skeleton-active"
         >
-          Remove product(s)
-        </button>
-      </form>
+          <div
+            className="ant-skeleton-content"
+          >
+            <h3
+              className="ant-skeleton-title"
+              style={
+                Object {
+                  "width": "38%",
+                }
+              }
+            />
+            <ul
+              className="ant-skeleton-paragraph"
+              style={undefined}
+            >
+              <li
+                style={
+                  Object {
+                    "width": undefined,
+                  }
+                }
+              />
+              <li
+                style={
+                  Object {
+                    "width": undefined,
+                  }
+                }
+              />
+              <li
+                style={
+                  Object {
+                    "width": "61%",
+                  }
+                }
+              />
+            </ul>
+          </div>
+        </div>
+        <h3>
+          Quantity: 
+          10
+        </h3>
+        <h3>
+          Subtotal: 
+          €49.90
+        </h3>
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            className="ant-input-number"
+            onMouseEnter={undefined}
+            onMouseLeave={undefined}
+            onMouseOut={undefined}
+            onMouseOver={undefined}
+            style={Object {}}
+          >
+            <div
+              className="ant-input-number-handler-wrap"
+            >
+              <span
+                aria-disabled={false}
+                aria-label="Increase Value"
+                className="ant-input-number-handler ant-input-number-handler-up "
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchCancel={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="button"
+                unselectable="unselectable"
+              >
+                <i
+                  className="anticon anticon-up ant-input-number-handler-up-inner"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className=""
+                    data-icon="up"
+                    fill="currentColor"
+                    height="1em"
+                    onClick={undefined}
+                    style={undefined}
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 0 0 140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"
+                    />
+                  </svg>
+                </i>
+              </span>
+              <span
+                aria-disabled={true}
+                aria-label="Decrease Value"
+                className="ant-input-number-handler ant-input-number-handler-down ant-input-number-handler-down-disabled"
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                role="button"
+                unselectable="unselectable"
+              >
+                <i
+                  className="anticon anticon-down ant-input-number-handler-down-inner"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className=""
+                    data-icon="down"
+                    fill="currentColor"
+                    height="1em"
+                    onClick={undefined}
+                    style={undefined}
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                    />
+                  </svg>
+                </i>
+              </span>
+            </div>
+            <div
+              aria-valuemax={10}
+              aria-valuemin={1}
+              aria-valuenow={1}
+              className="ant-input-number-input-wrap"
+              role="spinbutton"
+            >
+              <input
+                autoComplete="off"
+                autoFocus={undefined}
+                className="ant-input-number-input"
+                disabled={undefined}
+                id={undefined}
+                max={10}
+                maxLength={undefined}
+                min={1}
+                name="removeQuantity"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={undefined}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseUp={[Function]}
+                pattern={undefined}
+                placeholder={undefined}
+                readOnly={undefined}
+                required={false}
+                step={1}
+                tabIndex={undefined}
+                type={undefined}
+                value="1"
+              />
+            </div>
+          </div>
+          <button
+            className="ant-btn ant-btn-default"
+            onClick={[Function]}
+            type="submit"
+          >
+            <span>
+              Remove product(s)
+            </span>
+          </button>
+        </form>
+      </div>
     </div>
+  </div>
+  <div>
+    <button
+      className="ant-btn ant-btn-default"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        Add an item
+      </span>
+    </button>
   </div>
   <h2>
     Total: 
     €49.90
   </h2>
   <button
+    className="ant-btn ant-btn-primary"
     onClick={[Function]}
     type="button"
   >
-    Place order
+    <span>
+      Place order
+    </span>
   </button>
-  <div>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Add an item
-    </button>
-  </div>
 </div>
 `;
 
 exports[`renders the order detail page loading 1`] = `
-<div>
-  Loading...
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "height": "100%",
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="ant-spin ant-spin-spinning"
+  >
+    <span
+      className="ant-spin-dot ant-spin-dot-spin"
+    >
+      <i />
+      <i />
+      <i />
+      <i />
+    </span>
+  </div>
 </div>
 `;

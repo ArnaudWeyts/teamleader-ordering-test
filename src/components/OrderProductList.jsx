@@ -39,7 +39,7 @@ class OrderProductList extends Component {
     }
 
     return (
-      <div>
+      <div style={{ maxHeight: '70vh', overflowY: 'scroll' }}>
         {items.map(item => (
           <Card key={item['product-id']}>
             <Product product={item.product} />
